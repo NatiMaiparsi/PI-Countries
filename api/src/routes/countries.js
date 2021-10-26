@@ -26,7 +26,7 @@ const getApiInfo = async () => {
             }
         }
     )
-    const countries = filteredCountries.filter(c => c !== undefined)
+    const countries = filteredCountries.filter(c => c !== (undefined || null))
     // console.log(filteredCountries)
     return countries;
     
@@ -45,8 +45,8 @@ const getAllInfo = async () => {
     const totalInfo = [...apiInfo,...dbInfo];
     return totalInfo;
 }
-router.get('/', async (req, res) => {
-  try { const allCities = await getApiInfo()
+router.get('/', async (req, res, next) => {
+  try { const allCities = await getAllInfo()
     const cities = allCities.map(c => {
             return Country.findOrCreate({
                 where: {
@@ -70,18 +70,21 @@ router.get('/', async (req, res) => {
             } else {
                 res.status(200).send(countriesBd);
             }}
-            catch (err) {
-                next(err)
+            catch (error) {
+                next(error)
             }
         })
 
 
-router.get('/:idPais', async (req, res) => {
-    const idPais = req.params.idPais;
-    const countries = await getAllCountries()
+router.get('/:idPais', async (req, res, next) => {
+    try {const idPais = req.params.idPais;
+    const countries = await Country.findAll()
     const countrySearched = await countries.filter(country => country.id === idPais.toUpperCase())
     countrySearched.length ?
-    res.status(200).send(countrySearched) : res.status(404).send('The id does not exist')
+    res.status(200).send(countrySearched) : res.status(404).send('The id does not exist')}
+    catch (error) {
+        next(error)
+    }
 
 })
 
