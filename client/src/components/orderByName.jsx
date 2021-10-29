@@ -1,12 +1,11 @@
-import { useEffect, useState } from "react"
 import { useDispatch } from "react-redux"
 import { ASCENDENTE, DESCENDENTE } from "../constantes/sort"
-import { sort } from "../store/actions"
+import { sortName } from "../store/actions"
 
-export default function Order () {
+export default function OrderByName() {
     const dispatch = useDispatch()
     function onSelectChange(e) {
-        dispatch(sort(e.target.value))
+        dispatch(sortName(e.target.value))
     }
     return <div>
         <select name="orderByName" onChange={onSelectChange}>

@@ -1,9 +1,10 @@
 import axios from 'axios'
 export const FETCH_COUNTRIES = 'FETCH_COUNTRIES'
 export const SEARCH_COUNTRIES = 'SEARCH_COUNTRIES'
-export const SORT = 'SORT'
+export const SORT_NAME = 'SORT_NAME'
 export const NEW_ACTIVITY = 'NEW_ACTIVITY'
 export const FETCH_ACTIVITIES = 'FETCH_ACTIVITIES'
+export const SORT_POPULATION = 'SORT_POPULATION'
 
 export function fetchCountries() {
     return function(dispatch){
@@ -52,9 +53,16 @@ export function searchCountries(search) {
 // export function createActivity() {
 
 // }
-export function sort(order) {
+export function sortPopulation(order) {
     return {
-        type: SORT,
+        type: SORT_POPULATION,
+        payload: order
+    }
+}
+
+export function sortName(order) {
+    return {
+        type: SORT_NAME,
         payload: order
     }
 }

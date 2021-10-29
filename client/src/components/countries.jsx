@@ -9,10 +9,9 @@ export default function Countries() {
     useEffect(() => {
         dispatch(fetchCountries())
     }, [])
-    console.log(countries)
-    return <div>
+    return <>
         {countries.map(country => { 
-            return <Country id = {country.id} key={country.id} name={country.name} img={country.img} continent={country.continent}/>
+            return <Country key={country.id} name={country.name} img={country.img} continent={country.continent}/>
         })}
-    </div>
+    </>
 }
