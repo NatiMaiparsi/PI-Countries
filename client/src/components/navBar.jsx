@@ -10,9 +10,10 @@ export default function NavBar() {
                 <ul className="list">
                     <li className="list-item">
                         <NavLink exact to="/home" >Country App</NavLink>
-                        <NavLink to="/activities" >Activities</NavLink>
+                        <NavLink to="/addactivity" >Add activities</NavLink>
                         <SearchBar />
                     </li>
+
                 </ul>
             </nav>
         </header>

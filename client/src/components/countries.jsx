@@ -11,8 +11,8 @@ export default function Countries() {
     }, [])
     console.log(countries)
     return <div>
-        {countries.map(country => {
-            return <Country key={country.id} name={country.name} img={country.img} continent={country.continent}/>
+        {countries.map(country => { 
+            return <Country id = {country.id} key={country.id} name={country.name} img={country.img} continent={country.continent}/>
         })}
     </div>
 }

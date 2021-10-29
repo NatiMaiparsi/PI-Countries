@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import Activities from './components/activities';
+import AddActivity from './components/addActivity';
+import Details from './components/details';
 import Home from './components/home';
 import LandingPage from './components/landingPage';
 
@@ -11,7 +12,8 @@ function App() {
       <Switch>
         <Route exact path='/' component={LandingPage}/>
         <Route exact path='/home' component={Home}/>
-        <Route exact path='/activities' component={Activities}/>
+        <Route exact path='/addactivity' component={AddActivity}/>
+        <Route exact path='/:id' component={Details}/>
       </Switch>
     </div>
     </BrowserRouter>

@@ -2,17 +2,23 @@
 import NavBar from "./navBar";
 import Order from "./order";
 import Pages from "./pages";
+import Countries from "./countries";
+import SearchByActivity from "./searchByActivity";
+import SearchByContinent from "./searchByContinent";
 
 export default function Home() {
 
-    return (
-        <div>
+    return (<div>
+            <div>
             <NavBar />
             <Order />
-            <Pages />
-            {/* <div>
+            {/* <SearchByActivity /> */}
+            {/* <SearchByContinent /> */}
+            </div>
+            {/* <Pages /> */}
+            <div>
             <Countries/>
-            </div> */}
+            </div>
         </div>
     )
 }

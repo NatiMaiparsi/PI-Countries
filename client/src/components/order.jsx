@@ -5,16 +5,12 @@ import { sort } from "../store/actions"
 
 export default function Order () {
     const dispatch = useDispatch()
-    const [order, setOrder] = useState('')
-    useEffect(() => {
-        dispatch(sort(order))
-    },[order])
     function onSelectChange(e) {
-        setOrder(e.target.value)
+        dispatch(sort(e.target.value))
     }
     return <div>
-        <select name="order" onChange={onSelectChange}>
-            <option value='order'>Select order</option>
+        <select name="orderByName" onChange={onSelectChange}>
+            <option value='order'>Order by name</option>
             <option value={ASCENDENTE}>Ascendente</option>
             <option value={DESCENDENTE}>Descendente</option>
         </select>
