@@ -6,12 +6,18 @@ import {
   SEARCH_COUNTRIES,
   SORT_NAME,
   SORT_POPULATION,
+  FILTER_BY_CONTINENT,
+  POST_ACTIVITY,
+  GET_DETAILS,
+  FILTER_BY_ACTIVITY
 } from "../actions";
 
 const inicialState = {
   countries: [],
   filteredCountries: [],
-  // activities: []
+  activities: [],
+  detail: [],
+  filteredActivities: []
 };
 
 export default function reducer(state = inicialState, action) {
@@ -22,20 +28,34 @@ export default function reducer(state = inicialState, action) {
         countries: action.payload,
         filteredCountries: action.payload,
       };
-    // case FETCH_ACTIVITIES:
-    //     return {
-    //         ...state,
-    //         activities: action.payload,
-    //     }
+    case FETCH_ACTIVITIES:
+      return {
+        ...state,
+        activities: action.payload,
+      };
     case SEARCH_COUNTRIES:
       return {
         ...state,
         filteredCountries: action.payload,
-        // countries: action.filtered,
       };
+    case POST_ACTIVITY:
+      return {
+        ...state,
+      };
+    case GET_DETAILS:
+      return {
+        ...state,
+        detail: action.payload
+      }
     case SORT_NAME:
-      let orderedCountries = [...state.countries];
-      orderedCountries = orderedCountries.sort((a, b) => {
+      let countries = [...state.filteredCountries];
+      if (action.payload === "select") {
+        return {
+          ...state,
+          filteredCountries: countries,
+        };
+      }
+      let orderedCountries = countries.sort((a, b) => {
         if (a.name < b.name) {
           return action.payload === ASCENDENTE ? -1 : 1;
         }
@@ -49,8 +69,14 @@ export default function reducer(state = inicialState, action) {
         filteredCountries: orderedCountries,
       };
     case SORT_POPULATION:
-      let orderedCountriesPop = [...state.countries];
-      orderedCountriesPop = orderedCountriesPop.sort((a, b) => {
+      let allCountriesPop = [...state.filteredCountries];
+      if (action.payload === "select") {
+        return {
+          ...state,
+          filteredCountries: allCountriesPop,
+        };
+      }
+      let orderedCountriesPop = allCountriesPop.sort((a, b) => {
         if (a.population < b.population) {
           return action.payload === ASCENDENTE ? -1 : 1;
         }
@@ -63,12 +89,34 @@ export default function reducer(state = inicialState, action) {
         ...state,
         filteredCountries: orderedCountriesPop,
       };
-    // case NEW_ACTIVITY:
-    // return {
-    //     ...state,
-    //     activities: state.activities.concat(action.payload)
-    // }
-
+    case NEW_ACTIVITY:
+      return {
+        ...state,
+        activities: state.activities.concat(action.payload),
+      };
+    case FILTER_BY_CONTINENT:
+      const allCountries = state.countries;
+      const continentFiltered =
+        action.payload === "All"
+          ? allCountries
+          : allCountries.filter(
+              (country) => country.continent === action.payload
+            );
+      return {
+        ...state,
+        filteredCountries: continentFiltered,
+      };
+      case FILTER_BY_ACTIVITY:
+        const countriesActivities = state.activities;
+        const activityFiltered = 
+        action.payload === "All"
+        ? countriesActivities
+        : countriesActivities.filter(
+          (activity) => activity.country === action.payload);
+          return {
+            ...state,
+            filteredActivities: activityFiltered,
+          }
     default:
       return state;
   }

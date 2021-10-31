@@ -8,8 +8,10 @@ export default function OrderByPopulation() {
         dispatch(sortPopulation(e.target.value))
     }
     return <div>
+        <label value='order'>Order by population: </label>
         <select name="orderByPopulation" onChange={onSelectChange}>
-        <option value='order'>Order by population</option>
+        <option value='select'>Select</option>
+
             <option value={ASCENDENTE}>Ascendente</option>
             <option value={DESCENDENTE}>Descendente</option>
         </select>

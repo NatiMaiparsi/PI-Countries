@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Link } from "react-router-dom";
 import { fetchCountries } from "../store/actions";
 import Country from "./country";
-import Paginado from "./pageFunctions";
+import Paginado from "./paginado";
 export default function Pages() {
     const dispatch = useDispatch()
     let countries = useSelector((state) => state.filteredCountries)

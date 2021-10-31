@@ -8,8 +8,10 @@ export default function OrderByName() {
         dispatch(sortName(e.target.value))
     }
     return <div>
+    <label value='order'>Order by name: </label>
         <select name="orderByName" onChange={onSelectChange}>
-            <option value='order'>Order by name</option>
+        <option value='select'>Select</option>
+
             <option value={ASCENDENTE}>Ascendente</option>
             <option value={DESCENDENTE}>Descendente</option>
         </select>

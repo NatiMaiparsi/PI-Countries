@@ -1,12 +1,10 @@
 // import Countries from "./countries";
 import NavBar from "./navBar";
-import Order from "./orderByName";
 import Pages from "./pages";
-import Countries from "./countries";
-import SearchByActivity from "./searchByActivity";
-import SearchByContinent from "./searchByContinent";
+import FilterByContinent from "./filterByContinent";
 import OrderByName from "./orderByName";
 import OrderByPopulation from "./orderByPopulation";
+import FilterByActivity from "./filterByActivity";
 
 export default function Home() {
 
@@ -15,13 +13,10 @@ export default function Home() {
             <NavBar />
             <OrderByName />
             <OrderByPopulation/>
-            {/* <SearchByActivity /> */}
-            {/* <SearchByContinent /> */}
+            <FilterByActivity />
+            <FilterByContinent />
             </div>
             <Pages />
-            {/* <div >
-            <Countries/>
-            </div> */}
         </div>
     )
 }
