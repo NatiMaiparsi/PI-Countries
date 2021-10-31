@@ -30,9 +30,14 @@ const getApiInfo = async () => {
 };
 // getApiInfo()
 const getDbInfo = async () => {
-  return await Country.findAll({
-    include: Activity,
-  });
+  return await Activity.findAll({
+    include: {
+      model: Country,
+      attributes: ['name', 'id', 'capital', 'subregion', 'img', 'population', 'area'],
+      through: {
+        attributes: []
+      }
+  }});
 };
 
 const getAllInfo = async () => {
@@ -55,7 +60,6 @@ router.get("/", async (req, res, next) => {
           subregion: c.subregion,
           area: c.area,
           population: c.population,
-          // countryActivities: '',
         },
       });
     });
@@ -94,8 +98,12 @@ router.get("/:idPais", async (req, res, next) => {
 // router.post("/:idPais/activity/:idActivity", async (req, res, next) => {
 //   try {
 //     const { idPais, idActivity } = req.params;
-//     const country = await Country.findByPk(idPais);
-//     await country.addActivity(idActivity);
+//     console.log(idPais)
+//     console.log(idActivity)
+//     let country = await Country.findAll();
+//     country = country.filter(country => country.id.toLowerCase() === (idPais.toLowerCase()))
+//     console.log('country',country)
+//     await country[0].addActivity(idActivity);
 //     res.status(200);
 //   } catch (error) {
 //     next(error);
