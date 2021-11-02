@@ -25,30 +25,32 @@ const getApiInfo = async () => {
     };
   });
   const countries = filteredCountries.filter((c) => c !== undefined);
+
   return countries;
   // return filteredCountries
 };
 // getApiInfo()
-const getDbInfo = async () => {
-  return await Activity.findAll({
-    include: {
-      model: Country,
-      attributes: ['name', 'id', 'capital', 'subregion', 'img', 'population', 'area'],
-      through: {
-        attributes: []
-      }
-  }});
-};
+// const getDbInfo = async () => {
+//   return await Country.findAll({
+//     include: {
+//       model: Activity,
+//   }});
+// };
 
-const getAllInfo = async () => {
-  const apiInfo = await getApiInfo();
-  const dbInfo = await getDbInfo();
-  const totalInfo = [...apiInfo, ...dbInfo];
-  return totalInfo;
-};
+// const getAllInfo = async () => {
+//   const apiInfo = await getApiInfo();
+//   const dbInfo = await getDbInfo();
+//   const totalInfo = [...apiInfo, ...dbInfo];
+//   return totalInfo;
+// };
 router.get("/", async (req, res, next) => {
   try {
-    const allCities = await getAllInfo();
+    const countryBd = await Country.findAll({
+      include: {
+        model: Activity,
+        }
+    });
+    const allCities = await getApiInfo();
     const cities = allCities.map((c) => {
       return Country.findOrCreate({
         where: {
@@ -64,16 +66,15 @@ router.get("/", async (req, res, next) => {
       });
     });
     const name = req.query.name;
-    const countriesBd = await Country.findAll();
     if (name) {
-      const countrySearched = await countriesBd.filter((country) =>
+      const countrySearched = await countryBd.filter((country) =>
         country.name.toLowerCase().includes(name.toLowerCase())
       );
       countrySearched.length
         ? res.status(200).send(countrySearched)
         : res.status(404).send("The country does not exist");
     } else {
-      res.status(200).send(countriesBd);
+      res.status(200).send(countryBd);
     }
   } catch (error) {
     next(error);
@@ -83,7 +84,11 @@ router.get("/", async (req, res, next) => {
 router.get("/:idPais", async (req, res, next) => {
   try {
     const idPais = req.params.idPais;
-    const countries = await Country.findAll();
+    const countries = await Country.findAll({
+      include: {
+        model: Activity,
+        }
+    });
     const countrySearched = await countries.filter(
       (country) => country.id === idPais.toUpperCase()
     );
@@ -109,5 +114,7 @@ router.get("/:idPais", async (req, res, next) => {
 //     next(error);
 //   }
 // });
+
+
 
 module.exports = router;
