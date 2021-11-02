@@ -26,7 +26,7 @@ export default function FilterByActivity() {
             Filter by activity: 
             <form>
             <select onChange={e => handleFilterActivity(e)}>
-                <option value='Select'>Select activity...</option>
+                <option value='All'>Select activity...</option>
             {orderedActivities.map(activity => {
                 return <option value={activity.name}>{activity.name}</option>
             })}

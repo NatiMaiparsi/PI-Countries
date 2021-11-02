@@ -14,10 +14,21 @@ export function fetchCountries() {
     console.log('fetchCountries')
     return function(dispatch){
         axios.get('http://localhost:3001/api/countries/')
-        .then((countries) => {
-            return dispatch({
+        .then((countriesData) => {
+            let countries = countriesData.data.map(e=>{
+    			let country = {
+    				id: e.id,
+				    img: e.img,
+				    name: e.name,
+				    continent: e.continent,
+				    population: e.population,
+				    Activity: e.Activity, // cambie activities por activity en los dos!!
+    			}
+    			return country
+  			})
+            return dispatch({ 
                 type: FETCH_COUNTRIES,
-                payload: countries.data
+                payload: countries
             })
         })
         .catch ((error) => {
@@ -27,6 +38,7 @@ export function fetchCountries() {
 }
 
 export function fetchActivities() {
+    console.log('traigo actividades')
     return function(dispatch){
         axios.get('http://localhost:3001/api/activities/')
         .then((activities) => {
@@ -42,6 +54,7 @@ export function fetchActivities() {
 }
 
 export function getDetails(id) {
+    console.log('get details', id)
     return function(dispatch) {
         axios.get('http://localhost:3001/api/countries/' + id )
         .then((country) => {

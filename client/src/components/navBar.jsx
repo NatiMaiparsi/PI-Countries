@@ -5,10 +5,10 @@ import SearchBar from "./searchBar"
 
 export default function NavBar() {
     return (
-        <header className="navbar">
+        <header>
             <nav>
-                <ul className="list">
-                    <li className="list-item">
+                <ul>
+                    <li >
                         <NavLink exact to="/home" >Country App</NavLink>
                         <NavLink to="/addactivity" >Add activities</NavLink>
                         <SearchBar />

@@ -32,6 +32,7 @@ export default function reducer(state = inicialState, action) {
       return {
         ...state,
         activities: action.payload,
+        filteredActivities: action.payload
       };
     case SEARCH_COUNTRIES:
       return {
@@ -107,16 +108,15 @@ export default function reducer(state = inicialState, action) {
         filteredCountries: continentFiltered,
       };
       case FILTER_BY_ACTIVITY:
-        const countriesActivities = state.activities;
-        const activityFiltered = 
-        action.payload === "All"
-        ? countriesActivities
-        : countriesActivities.filter(
-          (activity) => activity.country === action.payload);
-          return {
-            ...state,
-            filteredActivities: activityFiltered,
-          }
+        const countriesActivities = state.countries;
+        const activityFiltered = action.payload === "All" ? countriesActivities
+        : 
+        countriesActivities.filter(
+          country =>  country.activities.find(act => act.name === action.payload));
+            return {
+              ...state,
+              filteredCountries: activityFiltered
+            }
     default:
       return state;
   }

@@ -5,7 +5,7 @@ export default function Paginado({countriesPerPage, allCountries, paginado}){
     for (let i=1; i<=Math.ceil(allCountries/countriesPerPage); i++) { 
         pageNumber.push(i)
     }
-    
+    console.log(pageNumber)
     return (
         <nav>
             <ul>
