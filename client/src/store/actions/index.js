@@ -11,7 +11,6 @@ export const GET_DETAILS = 'GET_DETAILS'
 export const FILTER_BY_ACTIVITY = 'FILTER_BY_ACTIVITY'
 
 export function fetchCountries() {
-    console.log('fetchCountries')
     return function(dispatch){
         axios.get('http://localhost:3001/api/countries/')
         .then((countriesData) => {
@@ -22,7 +21,7 @@ export function fetchCountries() {
 				    name: e.name,
 				    continent: e.continent,
 				    population: e.population,
-				    Activity: e.Activity, // cambie activities por activity en los dos!!
+				    activities: e.activities, 
     			}
     			return country
   			})
@@ -38,7 +37,6 @@ export function fetchCountries() {
 }
 
 export function fetchActivities() {
-    console.log('traigo actividades')
     return function(dispatch){
         axios.get('http://localhost:3001/api/activities/')
         .then((activities) => {
@@ -69,20 +67,12 @@ export function getDetails(id) {
 }}
 
     export function postActivity(payload) {
-        console.log('hago el post')
         return function(dispatch){
         axios.post('http://localhost:3001/api/activities', payload)
         .catch((error) => {
             console.log(error)
         })
     }}
-// export function postActivity(payload) {
-//     return async function(dispatch) {
-//         const activities = await axios.post('http://localhost:3001/api/activities', payload)
-//         console.log(activities)
-//         return activities
-//     }
-// }
 
 export function searchCountries(search) {
     return function(dispatch){

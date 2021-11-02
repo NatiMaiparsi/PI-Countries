@@ -10,8 +10,8 @@ export default function Pages() {
         dispatch(fetchCountries())
     }, [])
     const [currentPage, setCurrentPage] = useState(1)
-    const [countriesPerPage,setCountriesPerPage] = useState(9)
-    const indexLastCountry = currentPage * countriesPerPage // 9
+    const [countriesPerPage,setCountriesPerPage] = useState(10)
+    const indexLastCountry = currentPage * countriesPerPage // 10
     const indexFirstCountry = indexLastCountry - countriesPerPage // 0
     const currentCountries = countries?.slice(indexFirstCountry,indexLastCountry) // countries en la pantalla
     const length = countries.length

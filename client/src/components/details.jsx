@@ -1,9 +1,8 @@
 import React from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router";
-import { Link } from "react-router-dom";
-import { fetchActivities, searchCountries, getDetails } from "../store/actions";
+import { getDetails } from "../store/actions";
 
 export default function Details(params) {
   const {id} = useParams()
@@ -19,7 +18,7 @@ export default function Details(params) {
       { country?
       <>
             <div>
-              <h3>{country.name}</h3>
+              <h2>{country.name}</h2>
               <img src={country.img} alt="country img" />
               <h3>{country.id}</h3>
               <h3>Capital: {country.capital}</h3>
@@ -28,12 +27,13 @@ export default function Details(params) {
               <h4>Area: {country.area} km2</h4>
               <h4>Population: {country.population}</h4>
             </div>
+            <h3>Activities</h3>
       {country.activities?.map((e) => (
         <div>
-          <p>
-            Name: {e.name}, Dificulty: {e.dificulty}, Duration: {e.duration},
-            Season: {e.season}
-          </p>
+          <h3>Name: {e.name}</h3>
+          <h3>Dificulty: {e.dificulty}</h3>
+          <h3>Duration: {e.duration} hs</h3>
+          <h3>Season: {e.season}</h3>
         </div>
       ))}</> : 
           <div>Loading...</div>

@@ -1,14 +1,25 @@
-import axios from "axios"
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { useHistory } from "react-router"
 import { Link } from "react-router-dom"
 import { fetchCountries, postActivity } from "../store/actions"
 
+function validation(activity){
+    let errors = {};
+    if(!activity.name){
+        errors.name = 'The name of the activity is required'
+    } else if (!activity.country) {
+        errors.country = 'At least one country is required'
+    } else if (!activity.season) {
+        errors.season = 'Choose one season'
+    }
+    return errors
+}
 export default function AddActivity() {
     const dispatch = useDispatch()
     const history = useHistory()
     const countries = useSelector((state) => state.countries)
+    const [errors,setErrors] = useState({})
     const [activity,setActivity] = useState({
         name: '',
         dificulty: '',
@@ -20,6 +31,7 @@ export default function AddActivity() {
         dispatch(fetchCountries())
     },[])
 
+
     let orderedCountries = countries.sort((a, b) => {
         if (a.name < b.name) {
           return -1;
@@ -29,13 +41,6 @@ export default function AddActivity() {
         }
         return 0;
     })
-    // function onInputChange(e) {
-    //     e.preventDefault()
-    //     setActivity({
-    //         ...activity,
-    //         [e.target.name]: e.target.value
-    //     })
-    // }
 
     function handleSelect(e) {
         setActivity({
@@ -53,24 +58,19 @@ export default function AddActivity() {
         }
       }
 
-    // function onSubmit(e) {
-    //     e.preventDefault()
-    //     console.log(activity)
-    //     dispatch(postActivity(activity))   
-    // }
-
-     
-        // const [activity,setActivity] = useState({})
         function onInputChange(e) {
             e.preventDefault()
             setActivity({
                 ...activity,
                 [e.target.name]: e.target.value
             })
+            setErrors(validation({
+                ...activity,
+                [e.target.name]: e.target.value
+            }))
         }
         function onSubmit(e) {
             e.preventDefault()
-            console.log(activity)
             dispatch(postActivity(activity))
             alert('Activity created')
             setActivity({
@@ -99,6 +99,9 @@ export default function AddActivity() {
             <div>
         <label for="name">Activity: </label>
         <input onChange={onInputChange} name='name' type='text' value={activity.name}/>
+        {errors.name && (
+            <p>{errors.name}</p>
+        )}
         </div>
         <div>
         <label for="dificulty">Dificulty (1 to 5): </label>
@@ -127,6 +130,9 @@ export default function AddActivity() {
         name='Primavera'
         value='Primavera'
         onChange={(e) => handleCheck(e)}/>Primavera</label>
+                {errors.season && (
+            <p>{errors.season}</p>
+        )}
         </div>
         <div>
         <label for="country">Country: </label>
@@ -137,7 +143,9 @@ export default function AddActivity() {
                 return <option value={country.name}>{country.name}</option>
             })}
         </select>
-        {/* <ul><li>{activity.country.map(activity => activity + ', ')}</li></ul> */}
+        {errors.country && (
+            <p>{errors.country}</p>
+        )}
         <button type='submit'>Create!</button>
         </div>
     </form>

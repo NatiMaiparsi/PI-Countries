@@ -9,7 +9,7 @@ import {
   FILTER_BY_CONTINENT,
   POST_ACTIVITY,
   GET_DETAILS,
-  FILTER_BY_ACTIVITY
+  FILTER_BY_ACTIVITY,
 } from "../actions";
 
 const inicialState = {
@@ -17,7 +17,7 @@ const inicialState = {
   filteredCountries: [],
   activities: [],
   detail: [],
-  filteredActivities: []
+  filteredActivities: [],
 };
 
 export default function reducer(state = inicialState, action) {
@@ -32,7 +32,7 @@ export default function reducer(state = inicialState, action) {
       return {
         ...state,
         activities: action.payload,
-        filteredActivities: action.payload
+        filteredActivities: action.payload,
       };
     case SEARCH_COUNTRIES:
       return {
@@ -46,8 +46,8 @@ export default function reducer(state = inicialState, action) {
     case GET_DETAILS:
       return {
         ...state,
-        detail: action.payload
-      }
+        detail: action.payload,
+      };
     case SORT_NAME:
       let countries = [...state.filteredCountries];
       if (action.payload === "select") {
@@ -107,16 +107,27 @@ export default function reducer(state = inicialState, action) {
         ...state,
         filteredCountries: continentFiltered,
       };
-      case FILTER_BY_ACTIVITY:
-        const countriesActivities = state.countries;
-        const activityFiltered = action.payload === "All" ? countriesActivities
-        : 
-        countriesActivities.filter(
-          country =>  country.activities.find(act => act.name === action.payload));
-            return {
-              ...state,
-              filteredCountries: activityFiltered
-            }
+    case FILTER_BY_ACTIVITY:
+      const allCountriesAct = state.countries;
+      let activityCountries = [];
+      if(action.payload === 'All'){
+        return {
+          ...state,
+          filteredCountries: allCountriesAct,
+        }
+      }
+      for (let i = 0; i < allCountriesAct.length; i++) {
+        allCountriesAct[i].activities.map((a) => {
+          if (a.name.includes(action.payload)) {
+            return activityCountries.push(allCountriesAct[i]);
+          }
+        });
+      }
+      return {
+        ...state,
+        filteredCountries: activityCountries,
+      };
+
     default:
       return state;
   }

@@ -1,4 +1,3 @@
-// import Countries from "./countries";
 import NavBar from "./navBar";
 import Pages from "./pages";
 import FilterByContinent from "./filterByContinent";
