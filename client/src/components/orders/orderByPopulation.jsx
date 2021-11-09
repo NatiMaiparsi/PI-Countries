@@ -12,8 +12,8 @@ export default function OrderByPopulation() {
         <select name="orderByPopulation" onChange={onSelectChange}>
         <option value='select'>Select</option>
 
-            <option value={ASCENDENTE}>Ascendente</option>
-            <option value={DESCENDENTE}>Descendente</option>
+            <option value={ASCENDENTE}>Asc</option>
+            <option value={DESCENDENTE}>Desc</option>
         </select>
     </div>
 }
