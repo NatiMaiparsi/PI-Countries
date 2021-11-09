@@ -1,0 +1,23 @@
+.pageNumbers{
+    list-style: none;
+    display: flex;
+    justify-content: space-evenly;
+    margin-right: 30px
+}
+
+.numbers{
+    cursor: pointer;
+    background-color: #66336636;
+    border-radius: 9px;
+    width: 50%;
+    margin: 3px;
+    height: 22px;
+}
+
+.country{
+    background-color: #66336636;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    
+}

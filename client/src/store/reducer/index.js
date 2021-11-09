@@ -118,7 +118,7 @@ export default function reducer(state = inicialState, action) {
       }
       for (let i = 0; i < allCountriesAct.length; i++) {
         allCountriesAct[i].activities.map((a) => {
-          if (a.name.includes(action.payload)) {
+           if (a.name.includes(action.payload)) {
             return activityCountries.push(allCountriesAct[i]);
           }
         });

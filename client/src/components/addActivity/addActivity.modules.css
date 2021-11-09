@@ -1,0 +1,84 @@
+.errors{
+    color: red;
+    background-color: white;
+    border: solid 1px #663366;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.container{
+    color: white;
+    background-color: #6633663b;
+    border: solid 2px #663366;
+    border-radius: 0px 30px 0px 30px;
+    display: inline-block;
+    justify-content: center;
+    padding: 30px;
+    font-size: x-large;
+    text-transform: uppercase;
+    margin-top:5em;
+    margin-right: 5em;
+    font-size: 20px;
+    letter-spacing: .1em;  
+}
+
+.data{
+    margin-bottom: 50px;
+}
+
+input{
+    height: 20px;
+    background-color:#66336649;
+    border-radius:10px;
+    margin-top: 10px;
+    margin-left: 5px;
+    color: white
+}
+
+select {
+    height: 30px;
+    background-color:#66336649;
+    border-radius:10px;
+    margin-left: 5px;
+}
+
+.btn-create{
+    margin-top: 45px;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 90px;
+    border-radius: 10px;
+    color: white;
+    background-color: #663366;
+    border-style: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: .1em;  
+
+}
+
+.season{
+    margin-bottom: 50px;
+}
+
+.seasons{
+    margin-top: 15px;
+}
+
+.country-button{
+    display: inline-block;
+    position: relative;
+    margin-bottom: 10px;
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    color: white;
+    background-color: #663366;
+    border-style: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    letter-spacing: .1em;  
+
+}

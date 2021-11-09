@@ -1,0 +1,60 @@
+.navBar {
+    background-color: #663366;
+    height: 4em;
+    padding-bottom: 20px;
+    margin-top: 0
+}
+
+.link{
+    text-decoration: none;
+    color: white;
+    text-transform: uppercase;
+	letter-spacing: .10em;
+	cursor: pointer;
+	font-weight: bold;
+}
+
+.logo{
+    width: 15em;
+    height: 5em;
+    float: left;
+}
+
+.inputSearch{
+    width: 15em;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #66336648;
+}
+
+.buttonSearch{
+    margin: 15px;
+    height: 25px;
+    border-radius: 10px;
+    color: white;
+    background-color: transparent;
+    border-style: none;
+    text-transform: uppercase;
+    cursor: pointer
+}
+
+.searchBar{
+    margin: 15px;
+
+    float: right;
+
+}
+
+.addActivity-button{
+    margin: 11px;
+    background: transparent;
+    border-style:none;
+    width: 9em;
+    height: 3em;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+    text-transform: uppercase;
+    font-size: 20px;
+    font-weight: bold;
+}

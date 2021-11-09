@@ -52,7 +52,6 @@ export function fetchActivities() {
 }
 
 export function getDetails(id) {
-    console.log('get details', id)
     return function(dispatch) {
         axios.get('http://localhost:3001/api/countries/' + id )
         .then((country) => {

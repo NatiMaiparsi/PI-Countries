@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchCountries } from "../store/actions";
-import Country from "./country";
+import { fetchCountries } from "../../store/actions";
+import Country from "../countryCard/country";
 import Paginado from "./paginado";
+
+
 export default function Pages() {
     const dispatch = useDispatch()
     let countries = useSelector((state) => state.filteredCountries)
@@ -24,7 +26,7 @@ export default function Pages() {
         <div>
         <Paginado countriesPerPage={countriesPerPage} allCountries={length} paginado={paginado} />
         </div>
-        <div>
+        <div className='country'>
         {currentCountries?.map((c) => {
             return <Country id={c.id} name={c.name} img={c.img} continent={c.continent} key={c.id}/>
         })}

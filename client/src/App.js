@@ -1,9 +1,9 @@
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import './App.css';
-import AddActivity from './components/addActivity';
-import Details from './components/details';
-import Home from './components/home';
-import LandingPage from './components/landingPage';
+import AddActivity from './components/addActivity/addActivity';
+import Details from './components/details/details';
+import Home from './components/home/home';
+import LandingPage from './components/landingPage/landingPage';
 
 function App() {
   return (

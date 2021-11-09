@@ -29,20 +29,7 @@ const getApiInfo = async () => {
   return countries;
   // return filteredCountries
 };
-// getApiInfo()
-// const getDbInfo = async () => {
-//   return await Country.findAll({
-//     include: {
-//       model: Activity,
-//   }});
-// };
 
-// const getAllInfo = async () => {
-//   const apiInfo = await getApiInfo();
-//   const dbInfo = await getDbInfo();
-//   const totalInfo = [...apiInfo, ...dbInfo];
-//   return totalInfo;
-// };
 router.get("/", async (req, res, next) => {
   try {
     const countryBd = await Country.findAll({
@@ -99,22 +86,5 @@ router.get("/:idPais", async (req, res, next) => {
     next(error);
   }
 });
-
-// router.post("/:idPais/activity/:idActivity", async (req, res, next) => {
-//   try {
-//     const { idPais, idActivity } = req.params;
-//     console.log(idPais)
-//     console.log(idActivity)
-//     let country = await Country.findAll();
-//     country = country.filter(country => country.id.toLowerCase() === (idPais.toLowerCase()))
-//     console.log('country',country)
-//     await country[0].addActivity(idActivity);
-//     res.status(200);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
-
 
 module.exports = router;

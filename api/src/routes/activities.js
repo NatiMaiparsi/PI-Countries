@@ -8,10 +8,10 @@ router.post('/', async (req, res, next) => {
     const newActivity = await Activity.create({name, dificulty, duration, season})
     let countriesDb = await Country.findAll({
         where: { name : country},
-        include: [Activity] // agregue el include
+        include: [Activity] 
     })
     newActivity.addCountry(countriesDb)
-    res.send('Personaje creado con exito')
+    res.send('Actividad creada con exito')
 }
     catch(error) {
         next(error)

@@ -1,6 +1,6 @@
 import { useDispatch } from "react-redux"
-import { ASCENDENTE, DESCENDENTE } from "../constantes/sort"
-import { sortPopulation } from "../store/actions"
+import { ASCENDENTE, DESCENDENTE } from "../../constantes/sort"
+import { sortPopulation } from "../../store/actions"
 
 export default function OrderByPopulation() {
     const dispatch = useDispatch()

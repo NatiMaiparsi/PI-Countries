@@ -1,0 +1,87 @@
+.card{
+    color:white;
+    text-transform: uppercase;
+    border: solid 2px #663366;
+    border-radius: 0px 30px 0px 30px;
+    background-color: #6633663b;
+    justify-content: center;
+    border-width: 3px;
+    height: 400px;
+    width: 300px;
+    padding: 1em;
+    margin:1em .5em 1em .5em;
+}
+
+/* .card:hover{
+    border: solid 2px #663366;
+    border-radius: 0px 30px 0px 30px;
+    background-color: #6633663b;
+    justify-content: center;
+    border-width: 3px;
+    height: 400px;
+    width: 300px;
+    padding: 1em;
+    margin:1em .5em 1em .5em;
+    cursor: pointer;
+    animation: bounce 1s infinite alternate;
+    /* -webkit-animation: bounce 1s infinite alternate; */
+  /* }
+  @keyframes bounce {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-15px);
+    }
+  }
+  @-webkit-keyframes bounce {
+    from {
+      transform: translateY(0px);
+    }
+    to {
+      transform: translateY(-15px);
+    }
+  } */ 
+
+.flag{
+    height: 10em;
+    width: 16em;
+    margin: 10px;
+    border-radius: 0px 30px 0px 30px;
+}
+
+
+.button-info {
+    margin-top: 45px;
+    backface-visibility: hidden;
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    display: inline-block;
+    position: relative;
+    transform: translateZ(0px);
+    vertical-align: middle;
+    margin-bottom: 10px;
+    height: 30px;
+    width: 90px;
+    border-radius: 10px;
+    color: white;
+    background-color: #663366;
+    border-style: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+.button-info::before {
+    border-color: transparent transparent #663366;
+    border-style: solid;
+    border-width: 0 10px 10px;
+    content: "";
+    left: calc(50% - 10px);
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transition-duration: 0.3s;
+    transition-property: transform;
+    z-index: -1;
+}
+.button-info:hover::before, .button-info:focus::before, .button-info:active::before {
+    transform: translateY(-10px);
+}

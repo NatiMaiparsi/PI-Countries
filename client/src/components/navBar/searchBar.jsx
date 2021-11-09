@@ -1,6 +1,8 @@
 import {useState} from 'react'
-import { searchCountries } from '../store/actions';
 import { useDispatch } from 'react-redux';
+import { searchCountries } from '../../store/actions';
+import './navBar.modules.css'
+
 export default function SearchBar() {
     const [search, setSearch] = useState('')
     let dispatch = useDispatch()
@@ -15,10 +17,10 @@ export default function SearchBar() {
         setSearch(e.target.value)
     }
 
-    return <div>
+    return <>
         <form onSubmit={e => onSubmit(e)}>
-            <input type="text" placeholder='Search country...'onChange={e => onInputChange(e)} value={search}/>
-            <input type='submit' value='Search'/>
+            <input className='inputSearch' type="text" placeholder='Search country...'onChange={e => onInputChange(e)} value={search}/>
+            <input className='buttonSearch' type='submit' value='Search'/>
         </form>
-    </div>
+    </>
 }

@@ -1,0 +1,82 @@
+.details-container{
+display: inline-block;
+}
+
+.card-details{
+    color:white;
+    text-transform: uppercase;
+    border: solid 2px #663366;
+    border-radius: 0px 30px 0px 30px;
+    background-color: #6633663b;
+    justify-content: center;
+    border-width: 3px;
+    height: 800px;
+    width: 400px;
+    float: left;
+    padding: 1em;
+    margin:5em 0em 0em 0em;
+}
+
+.activities{
+    color:white;
+    text-transform: uppercase;
+    border: solid 2px #663366;
+    border-radius: 0px 30px 0px 30px;
+    background-color: #6633663b;
+    justify-content: center;
+    border-width: 3px;
+    height: 800px;
+    width: 800px;
+    padding: 1em;
+    margin:5em 0em 0em 2em;
+    float: right;
+}
+.activity-detail{
+    color:white;
+    text-transform: uppercase;
+    border: solid 2px #663366;
+    border-radius: 0px 30px 0px 30px;
+    background-color: #6633663b;
+    justify-content: center;
+    height: 250px;
+    width: 300px;
+    display: inline-block;
+    margin: 1em;
+
+}
+
+.button-create{
+    margin-top: 45px;
+    display: inline-block;
+    position: relative;
+    margin-bottom: 10px;
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+    color: white;
+    background-color: #663366;
+    border-style: none;
+    text-transform: uppercase;
+    cursor: pointer;
+}
+
+.button-back{
+    margin: 20px;
+    height: 35px;
+    width: 105px;
+    border-radius: 10px;
+    color: white;
+    background-color: #663366;
+    border-style: none;
+    text-transform: uppercase;
+    cursor: pointer;
+    float: left;
+}
+
+.title-activities{
+    font-size: 25px;
+}
+
+.flag-details{
+    border-radius: 0px 30px 0px 30px;
+}
